@@ -104,15 +104,13 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
         private async Task<IEnumerable<CredencialesGsaResponseSoapDto>> ObtenerCredencialesSoap()
         {
-            ServicePointManager.ServerCertificateValidationCallback +=
-               (sender, certificate, chain, sslPolicyErrors) => true;
-
             // Generamos el request
             string requestSoap = string.Format(SoapRequestGsa,
                 SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
             var soapAction = configuration["Gsa:MetodoCredenciales"]!;
 
             // Generamos la consulta
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
             var restClient = new RestClient(configuration["Gsa:BaseUrl"]!);
             var restRequest = new RestRequest()
             {
@@ -123,6 +121,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             restRequest.AddHeader("SOAPAction", soapAction);
             restRequest.AddParameter("text/xml", requestSoap, ParameterType.RequestBody);
 
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
             var response = await restClient.ExecuteAsync(restRequest);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
