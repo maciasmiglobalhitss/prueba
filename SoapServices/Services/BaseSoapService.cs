@@ -7,6 +7,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Buffers;
 using System.Linq;
+using System.Net;
 using System.Text.Json;
 using System.Xml.Linq;
 
@@ -103,6 +104,9 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
         private async Task<IEnumerable<CredencialesGsaResponseSoapDto>> ObtenerCredencialesSoap()
         {
+            ServicePointManager.ServerCertificateValidationCallback +=
+               (sender, certificate, chain, sslPolicyErrors) => true;
+
             // Generamos el request
             string requestSoap = string.Format(SoapRequestGsa,
                 SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
