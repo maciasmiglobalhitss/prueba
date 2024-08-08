@@ -5,6 +5,7 @@ using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using RestSharp.Authenticators;
+using System.Buffers;
 using System.Linq;
 using System.Text.Json;
 using System.Xml.Linq;
@@ -105,6 +106,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             // Generamos el request
             string requestSoap = string.Format(SoapRequestGsa,
                 SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
+            var soapAction = configuration["Gsa:MetodoCredenciales"]!;
 
             // Generamos la consulta
             var restClient = new RestClient(configuration["Gsa:BaseUrl"]!);
@@ -112,8 +114,10 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             {
                 Method = Method.Post,
             };
-            restRequest.AddHeader("Content-Type", TextXml);
-            restRequest.AddBody(requestSoap, TextXml);
+
+            restRequest.AddHeader("Content-Type", "text/xml;charset=UTF-8");
+            restRequest.AddHeader("SOAPAction", soapAction);
+            restRequest.AddParameter("text/xml", requestSoap, ParameterType.RequestBody);
 
             var response = await restClient.ExecuteAsync(restRequest);
 
