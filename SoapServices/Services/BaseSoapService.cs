@@ -5,6 +5,7 @@ using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using RestSharp.Authenticators;
+using ServiceReference1;
 using System.Buffers;
 using System.Linq;
 using System.Net;
@@ -46,6 +47,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         {
             #region Recuperación de credenciales soffi
             var credencialesGsa = await ObtenerCredencialesSoap();
+            if (credencialesGsa is null) credencialesGsa = [];
 
             var audUserCods = configuration["Gsa:AudUserCod"]!.Split(";");
             var audPassCods = configuration["Gsa:AudPassCod"]!.Split(";");
@@ -75,8 +77,15 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
             var options = new RestClientOptions()
             {
-                BaseUrl = new Uri(configuration["UrlGeneraToken"]!),
-                Authenticator = new HttpBasicAuthenticator(aud_user, Base64Decode(aud_pass))
+                BaseUrl = new Uri(configuration["SoapServices:TokenBaseUrl"]!),
+                Authenticator = new HttpBasicAuthenticator(aud_user, Base64Decode(aud_pass)),
+                ConfigureMessageHandler = handler =>
+                {
+                    return new HttpClientHandler
+                    {
+                        ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
+                    };
+                }
             };
             var client = new RestClient(options);
             var request = new RestRequest()
@@ -110,13 +119,31 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             ServicePointManager.ServerCertificateValidationCallback =
                 new RemoteCertificateValidationCallback(AcceptAllCertifications);
 
+            //var gsa = new ServiceReference1.gpsys_wsSoapPortClient();
+            //var credenciales = await gsa.CONSULTA_PRM_SEGURIDADAsync(configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
+
+
+
             // Generamos el request
             string requestSoap = string.Format(SoapRequestGsa,
                 SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
             var soapAction = configuration["Gsa:MetodoCredenciales"]!;
 
+
+            var options = new RestClientOptions()
+            {
+                BaseUrl = new Uri(configuration["Gsa:BaseUrl"]!),
+                ConfigureMessageHandler = handler =>
+                {
+                    return new HttpClientHandler
+                    {
+                        ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
+                    };
+                }
+            };
+
             // Generamos la consulta
-            var restClient = new RestClient(configuration["Gsa:BaseUrl"]!);
+            var restClient = new RestClient(options);
             var restRequest = new RestRequest()
             {
                 Method = Method.Post,
