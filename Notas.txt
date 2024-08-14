@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<SOAP-ENV:Body>
+		<gpsys_ws.CONSULTA_PRM_SEGURIDADResponse xmlns="KB_GW_Seguridad">
+			<Result xmlns="KB_GW_Seguridad">&lt;gps_sdt_result_mensaje parametro="seguridad" metodo="CONSULTA_PRM_SEGURIDAD" xmlns="KB_GW_Seguridad"&gt;
+	&lt;aplicacion&gt;48&lt;/aplicacion&gt;
+	&lt;recurso&gt;PSINERGSHP&lt;/recurso&gt;
+	&lt;mensaje&gt;OK&lt;/mensaje&gt;
+	&lt;data&gt;
+		&lt;gps_sdt_get_parametrosItem&gt;
+			&lt;codigo&gt;SEGPAR001 &lt;/codigo&gt;
+			&lt;descripcion&gt;AUDIENCIA - USER&lt;/descripcion&gt;
+			&lt;valor&gt;aud-sinergia&lt;/valor&gt;
+		&lt;/gps_sdt_get_parametrosItem&gt;
+		&lt;gps_sdt_get_parametrosItem&gt;
+			&lt;codigo&gt;SEGPAR002 &lt;/codigo&gt;
+			&lt;descripcion&gt;AUDIENCIA - CLAVE&lt;/descripcion&gt;
+			&lt;valor&gt;KkVjdWFkb3IqMDE=&lt;/valor&gt;
+		&lt;/gps_sdt_get_parametrosItem&gt;
+		&lt;gps_sdt_get_parametrosItem&gt;
+			&lt;codigo&gt;SEGPAR003 &lt;/codigo&gt;
+			&lt;descripcion&gt;USUARIO DE SERVICIO&lt;/descripcion&gt;
+			&lt;valor&gt;psinergia_usl&lt;/valor&gt;
+		&lt;/gps_sdt_get_parametrosItem&gt;
+		&lt;gps_sdt_get_parametrosItem&gt;
+			&lt;codigo&gt;SEGPAR004 &lt;/codigo&gt;
+			&lt;descripcion&gt;CLAVE USUARIO DE SERVICIO&lt;/descripcion&gt;
+			&lt;valor&gt;KkVjdWFkb3IqMDE=&lt;/valor&gt;
+		&lt;/gps_sdt_get_parametrosItem&gt;
+		&lt;gps_sdt_get_parametrosItem&gt;
+			&lt;codigo&gt;SEGPAR005 &lt;/codigo&gt;
+			&lt;descripcion&gt;FOLDER&lt;/descripcion&gt;
+			&lt;valor&gt;PVAULTDV/SINERGIA/PSinSharePoint_USD&lt;/valor&gt;
+		&lt;/gps_sdt_get_parametrosItem&gt;
+		&lt;gps_sdt_get_parametrosItem&gt;
+			&lt;codigo&gt;SEGPAR007 &lt;/codigo&gt;
+			&lt;descripcion&gt;SECRETKEYPASS&lt;/descripcion&gt;
+			&lt;valor&gt;102ddaf691e1615d5dacd4c86299bfa4&lt;/valor&gt;
+		&lt;/gps_sdt_get_parametrosItem&gt;
+	&lt;/data&gt;
+&lt;/gps_sdt_result_mensaje&gt;</Result>
+		</gpsys_ws.CONSULTA_PRM_SEGURIDADResponse>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
