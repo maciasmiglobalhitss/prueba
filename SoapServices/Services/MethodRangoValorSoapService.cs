@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PruebaConexionIntegracion.Commons;
+using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
+using System.Net;
 using System.Xml.Linq;
 
 namespace PruebaConexionIntegracion.SoapServices.Services
@@ -264,7 +266,15 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, baseSoapService.SoapWss, token, vIdTipo, vGrupo);
 
             // Generamos la consulta
-            var restClient = new RestClient(configuration["SoapServices:BaseUrl"]!);
+            var options = new RestClientOptions()
+            {
+                BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
+            };
+
+            // Aplicación del bypass de SSL
+            if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
+
+            var restClient = new RestClient(options);
             var restRequest = new RestRequest()
             {
                 Method = Method.Post,
@@ -278,7 +288,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
 
-            var responseContent = response.Content;
+            var responseContent = WebUtility.HtmlDecode(response.Content);
             if (string.IsNullOrEmpty(responseContent))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
 
@@ -286,12 +296,22 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             var xDocument = XDocument.Parse(responseContent);
             XNamespace nameSpaceXmlns = baseSoapService.SoapXmlns;
 
-            var resultado = xDocument
-                .Descendants(baseSoapService.SoapXmlns + "getRangosBean")
-                .Select(bean => new RangoValorResponseSoapDto()
+            var desencats = xDocument
+                .Descendants(nameSpaceXmlns + "getRangosBean")
+                .ToList();
+
+            List<RangoValorResponseSoapDto> resultado = [];
+            desencats.ForEach(bean =>
+            {
+                var mensaje = bean.Element(nameSpaceXmlns + "message")?.Value;
+                if (!string.IsNullOrEmpty(mensaje)) throw new SoapServiceException(HandledErrorMessageType.ErrorErrorServicioTitle, HandledErrorMessageType.ErrorErrorServicioDetail);
+
+                var elemento = bean.Element(nameSpaceXmlns + "vValor")?.Value;
+                resultado.Add(new()
                 {
-                    VValor = Convert.ToDecimal(bean.Element(baseSoapService.SoapXmlns + "vValor")?.Value),
+                    VValor = Convert.ToDecimal(bean.Element(nameSpaceXmlns + "vValor")?.Value),
                 });
+            });
 
             return resultado;
         }

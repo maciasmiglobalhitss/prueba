@@ -21,6 +21,9 @@
 
         public const string ErrorPrepararEncabezarTitle = "Error en el sistema";
         public const string ErrorPrepararEncabezarDetail = "Error al preparar encabezados del requerimiento";
+
+        public const string ErrorErrorServicioTitle = "Error en el sistema";
+        public const string ErrorErrorServicioDetail = "El servicio se ejecuto exitosamente, pero devolvió un resultado incorrecto";
         #endregion Errores Controlados
     }
 }
