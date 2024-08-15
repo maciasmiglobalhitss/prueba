@@ -6,7 +6,7 @@
         public string It { get; set; } = string.Empty;
         public string Lit { get; set; } = string.Empty;
         public string Ct { get; set; } = string.Empty;
-        public bool Jp { get; set; }
-        public bool Cod { get; set; }
+        public string Jp { get; set; }
+        public string Cod { get; set; }
     }
 }

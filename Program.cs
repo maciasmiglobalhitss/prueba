@@ -18,7 +18,7 @@ var host = builder.Build();
 using (var scope = host.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    await VerificarFuncionaMethodF0005Soap(services);
+    //await VerificarFuncionaMethodF0005Soap(services);
     await VerificarFuncionaMethodF4101ProductoSoap(services);
 
 }

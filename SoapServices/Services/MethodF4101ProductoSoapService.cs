@@ -2,6 +2,7 @@
 using PruebaConexionIntegracion.Commons;
 using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
+using PruebaConexionIntegracion.SoapServices.Models.Commons;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using System.Net;
@@ -85,20 +86,34 @@ namespace PruebaConexionIntegracion.SoapServices.Services
                     It = bean.Element(nameSpaceXmlns + "it")?.Value ?? string.Empty,
                     Lit = bean.Element(nameSpaceXmlns + "lit")?.Value ?? string.Empty,
                     Ct = bean.Element(nameSpaceXmlns + "ct")?.Value ?? string.Empty,
-                    Jp = Convert.ToBoolean(bean.Element(nameSpaceXmlns + "jp")?.Value),
-                    Cod = Convert.ToBoolean(bean.Element(nameSpaceXmlns + "cod")?.Value),
+                    Jp = bean.Element(nameSpaceXmlns + "jp")?.Value ?? string.Empty,
+                    Cod = bean.Element(nameSpaceXmlns + "cod")?.Value ?? string.Empty,
                 });
 
             return resultado;
         }
 
-        private string ProcesarEncabezadosFaltantes(string responseContent)
+        private static string ProcesarEncabezadosFaltantes(string responseContent)
         {
+            ICollection<NameSpaceXml> encabezados = [
+                new("xsi", "xmlns:xsi=\"xsi\"")
+            ];
+
             string pattern = "^<([^>]*)>";
+            var match = Regex.Match(responseContent, pattern);
+            if (!match.Success) throw new SoapServiceException(HandledErrorMessageType.ErrorPrepararEncabezarTitle, HandledErrorMessageType.ErrorPrepararEncabezarDetail);
 
-            var nuevoEncabezado = "<Hola>";
+            var nuevoEncabezado = match.Groups[1].Value
+                .Replace("<", string.Empty)
+                .Replace(">", string.Empty);
 
-            return Regex.Replace(responseContent, pattern, nuevoEncabezado);
+            foreach (var encabezado in encabezados)
+            {
+                if (!nuevoEncabezado.Contains(encabezado.Prefijo) && responseContent.Contains(encabezado.Prefijo))
+                    nuevoEncabezado += $" {encabezado.Encabezado}";
+            }
+
+            return Regex.Replace(responseContent, pattern, $"<{nuevoEncabezado}>");
         }
     }
 }

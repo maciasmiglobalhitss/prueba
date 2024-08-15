@@ -19,6 +19,8 @@
         public const string ErrorCredencialesVaciasTitle = "Error en el sistema";
         public const string ErrorCredencialesVaciasDetail = "Error al recuperar las credenciales desde gsa";
 
+        public const string ErrorPrepararEncabezarTitle = "Error en el sistema";
+        public const string ErrorPrepararEncabezarDetail = "Error al preparar encabezados del requerimiento";
         #endregion Errores Controlados
     }
 }
