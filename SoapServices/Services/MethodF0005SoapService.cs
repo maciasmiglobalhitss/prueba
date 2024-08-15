@@ -5,6 +5,7 @@ using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using RestSharp.Authenticators;
+using System.Net;
 using System.Xml.Linq;
 
 namespace PruebaConexionIntegracion.SoapServices.Services
@@ -46,7 +47,6 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, baseSoapService.SoapWss, token, tipoConsulta);
 
             // Generamos la consulta
-
             var options = new RestClientOptions()
             {
                 BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
@@ -55,7 +55,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             // Aplicación del bypass de SSL
             if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
 
-            var restClient = new RestClient(configuration["SoapServices:BaseUrl"]!);
+            var restClient = new RestClient(options);
             var restRequest = new RestRequest()
             {
                 Method = Method.Post,
@@ -69,7 +69,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
 
-            var responseContent = response.Content;
+            var responseContent = WebUtility.HtmlDecode(response.Content);
             if (string.IsNullOrEmpty(responseContent))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
 

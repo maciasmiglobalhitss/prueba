@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PruebaConexionIntegracion.Commons;
+using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
+using System.Net;
 using System.Xml.Linq;
 
 namespace PruebaConexionIntegracion.SoapServices.Services
@@ -10,7 +12,8 @@ namespace PruebaConexionIntegracion.SoapServices.Services
     public class MethodF4101ProductoSoapService : IMethodF4101ProductoSoapService
     {
         private const string TipoFundas = "V_Fundas";
-        private const string SoapRequest = "<soapenv:Envelope xmlns:soapenv=\"{0}\" xmlns:wss=\"{1}\"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>{2}</wss:token><wss:vIdItem>{3}</wss:vIdItem><wss:vCampo>{4}</wss:vCampo><wss:vCrit></wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>";
+        private const string VCampoFunda = "IMDSC1";
+        private const string SoapRequest = "<soapenv:Envelope xmlns:soapenv=\"{0}\" xmlns:wss=\"{1}\"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>{2}</wss:token><wss:vIdItem>{3}</wss:vIdItem><wss:vCampo>{4}</wss:vCampo><wss:vCrit>{5}</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>";
 
         private readonly IConfiguration configuration;
         private readonly IBaseSoapService baseSoapService;
@@ -23,10 +26,11 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
         public async Task<IEnumerable<F4101ProductoResponseSoapDto>> ObtenerFundasSoap()
         {
-            return await EjecutarConsulta(TipoFundas);
+            return await EjecutarConsulta(TipoFundas, VCampoFunda);
         }
 
-        private async Task<IEnumerable<F4101ProductoResponseSoapDto>> EjecutarConsulta(string tipo)
+        private async Task<IEnumerable<F4101ProductoResponseSoapDto>> EjecutarConsulta(
+            string vIdItem, string vCampo = "", string vCritic = "")
         {
             // Generamos el token
             string token = await baseSoapService.ObtenerTokenSoap();
@@ -35,10 +39,19 @@ namespace PruebaConexionIntegracion.SoapServices.Services
                 throw new SoapServiceException(HandledErrorMessageType.ErrorGeneraTokenTitle, HandledErrorMessageType.ErrorGeneraTokenTitle);
 
             // Generamos el request
-            string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, baseSoapService.SoapWss, token, tipo, string.Empty);
+            string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, 
+                baseSoapService.SoapWss, token, vIdItem, vCampo, vCritic);
 
             // Generamos la consulta
-            var restClient = new RestClient(configuration["SoapServices:BaseUrl"]!);
+            var options = new RestClientOptions()
+            {
+                BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
+            };
+
+            // Aplicación del bypass de SSL
+            if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
+
+            var restClient = new RestClient(options);
             var restRequest = new RestRequest()
             {
                 Method = Method.Post,
@@ -52,7 +65,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
 
-            var responseContent = response.Content;
+            var responseContent = WebUtility.HtmlDecode(response.Content);
             if (string.IsNullOrEmpty(responseContent))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
 
@@ -61,15 +74,15 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             XNamespace nameSpaceXmlns = baseSoapService.SoapXmlns;
 
             var resultado = xDocument
-                .Descendants(baseSoapService.SoapXmlns + "getProductosBean")
+                .Descendants(nameSpaceXmlns + "getProductosBean")
                 .Select(bean => new F4101ProductoResponseSoapDto()
                 {
-                    Id = Convert.ToDecimal(bean.Element(baseSoapService.SoapXmlns + "id")?.Value),
-                    It = bean.Element(baseSoapService.SoapXmlns + "it")?.Value ?? string.Empty,
-                    Lit = bean.Element(baseSoapService.SoapXmlns + "lit")?.Value ?? string.Empty,
-                    Ct = bean.Element(baseSoapService.SoapXmlns + "ct")?.Value ?? string.Empty,
-                    Jp = Convert.ToBoolean(bean.Element(baseSoapService.SoapXmlns + "jp")?.Value),
-                    Cod = Convert.ToBoolean(bean.Element(baseSoapService.SoapXmlns + "cod")?.Value),
+                    Id = Convert.ToDecimal(bean.Element(nameSpaceXmlns + "id")?.Value),
+                    It = bean.Element(nameSpaceXmlns + "it")?.Value ?? string.Empty,
+                    Lit = bean.Element(nameSpaceXmlns + "lit")?.Value ?? string.Empty,
+                    Ct = bean.Element(nameSpaceXmlns + "ct")?.Value ?? string.Empty,
+                    Jp = Convert.ToBoolean(bean.Element(nameSpaceXmlns + "jp")?.Value),
+                    Cod = Convert.ToBoolean(bean.Element(nameSpaceXmlns + "cod")?.Value),
                 });
 
             return resultado;
