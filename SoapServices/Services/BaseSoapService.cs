@@ -1,13 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PruebaConexionIntegracion.Commons;
-using PruebaConexionIntegracion.SoapServices;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using RestSharp.Authenticators;
-using ServiceReference1;
-using System.Buffers;
-using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -23,6 +19,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         protected const string m_SoapXmlns = "http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/";
         protected const string m_TextXml = "text/xml";
         protected const string m_SoapAction = "SOAPAction";
+        protected const string m_KbGwSeguridad = "KB_GW_Seguridad";
 
         private const string SoapRequestGsa = "<soapenv:Envelope xmlns:soapenv=\"{0}\" xmlns:kb=\"KB_GW_Seguridad\"><soapenv:Header/><soapenv:Body><kb:gpsys_ws.CONSULTA_PRM_SEGURIDAD><kb:Scg_app_codigo>{1}</kb:Scg_app_codigo><kb:Gps_prm_rec_codigo>{2}</kb:Gps_prm_rec_codigo></kb:gpsys_ws.CONSULTA_PRM_SEGURIDAD></soapenv:Body></soapenv:Envelope>";
 
@@ -115,20 +112,10 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
         private async Task<IEnumerable<CredencialesGsaResponseSoapDto>> ObtenerCredencialesSoap()
         {
-            // Ignore SSL certificate errors
-            ServicePointManager.ServerCertificateValidationCallback =
-                new RemoteCertificateValidationCallback(AcceptAllCertifications);
-
-            //var gsa = new ServiceReference1.gpsys_wsSoapPortClient();
-            //var credenciales = await gsa.CONSULTA_PRM_SEGURIDADAsync(configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
-
-
-
             // Generamos el request
             string requestSoap = string.Format(SoapRequestGsa,
                 SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
             var soapAction = configuration["Gsa:MetodoCredenciales"]!;
-
 
             var options = new RestClientOptions()
             {
@@ -163,16 +150,16 @@ namespace PruebaConexionIntegracion.SoapServices.Services
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
 
             // Parsear la respuesta SOAP
-            var xDocument = XDocument.Parse(responseContent);
-            XNamespace nameSpaceXmlns = SoapXmlns;
+            var xDocument = XDocument.Parse(WebUtility.HtmlDecode(responseContent));
+            XNamespace nameSpaceKbGwSeguridad = m_KbGwSeguridad;
 
             var resultado = xDocument
-                .Descendants(SoapXmlns + "gps_sdt_get_parametrosItem")
+                .Descendants(nameSpaceKbGwSeguridad + "gps_sdt_get_parametrosItem")
                 .Select(bean => new CredencialesGsaResponseSoapDto()
                 {
-                    Codigo = (bean.Element(SoapXmlns + "codigo")?.Value ?? string.Empty).Trim(),
-                    Descripcion = (bean.Element(SoapXmlns + "descripcion")?.Value ?? string.Empty).Trim(),
-                    Valor = (bean.Element(SoapXmlns + "valor")?.Value ?? string.Empty).Trim(),
+                    Codigo = (bean.Element(nameSpaceKbGwSeguridad + "codigo")?.Value ?? string.Empty).Trim(),
+                    Descripcion = (bean.Element(nameSpaceKbGwSeguridad + "descripcion")?.Value ?? string.Empty).Trim(),
+                    Valor = (bean.Element(nameSpaceKbGwSeguridad + "valor")?.Value ?? string.Empty).Trim(),
                 });
 
             return resultado;
