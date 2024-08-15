@@ -6,6 +6,7 @@ using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace PruebaConexionIntegracion.SoapServices.Services
@@ -30,65 +31,6 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             return await EjecutarConsulta(TipoFundas, VCampoFunda);
         }
 
-        //private async Task<IEnumerable<F4101ProductoResponseSoapDto>> EjecutarConsulta(
-        //    string vIdItem, string vCampo = "", string vCritic = "")
-        //{
-        //    // Generamos el token
-        //    string token = await baseSoapService.ObtenerTokenSoap();
-
-        //    if (string.IsNullOrEmpty(token))
-        //        throw new SoapServiceException(HandledErrorMessageType.ErrorGeneraTokenTitle, HandledErrorMessageType.ErrorGeneraTokenTitle);
-
-        //    // Generamos el request
-        //    string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, 
-        //        baseSoapService.SoapWss, token, vIdItem, vCampo, vCritic);
-
-        //    // Generamos la consulta
-        //    var options = new RestClientOptions()
-        //    {
-        //        BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
-        //    };
-
-        //    // Aplicación del bypass de SSL
-        //    if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
-
-        //    var restClient = new RestClient(options);
-        //    var restRequest = new RestRequest()
-        //    {
-        //        Method = Method.Post,
-        //    };
-        //    restRequest.AddHeader("Content-Type", baseSoapService.TextXml);
-        //    restRequest.AddBody(requestSoap, baseSoapService.TextXml);
-        //    restRequest.AddHeader(baseSoapService.SoapAction, configuration["SoapServices:MetodoF4101Producto"]!);
-
-        //    var response = await restClient.ExecuteAsync(restRequest);
-
-        //    if (response.StatusCode != System.Net.HttpStatusCode.OK)
-        //        throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
-
-        //    var responseContent = WebUtility.HtmlDecode(response.Content);
-        //    if (string.IsNullOrEmpty(responseContent))
-        //        throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
-
-        //    // Parsear la respuesta SOAP
-        //    var xDocument = XDocument.Parse(responseContent);
-        //    XNamespace nameSpaceXmlns = baseSoapService.SoapXmlns;
-
-        //    var resultado = xDocument
-        //        .Descendants(nameSpaceXmlns + "getProductosBean")
-        //        .Select(bean => new F4101ProductoResponseSoapDto()
-        //        {
-        //            Id = Convert.ToDecimal(bean.Element(nameSpaceXmlns + "id")?.Value),
-        //            It = bean.Element(nameSpaceXmlns + "it")?.Value ?? string.Empty,
-        //            Lit = bean.Element(nameSpaceXmlns + "lit")?.Value ?? string.Empty,
-        //            Ct = bean.Element(nameSpaceXmlns + "ct")?.Value ?? string.Empty,
-        //            Jp = Convert.ToBoolean(bean.Element(nameSpaceXmlns + "jp")?.Value),
-        //            Cod = Convert.ToBoolean(bean.Element(nameSpaceXmlns + "cod")?.Value),
-        //        });
-
-        //    return resultado;
-        //}
-
         private async Task<IEnumerable<F4101ProductoResponseSoapDto>> EjecutarConsulta(
             string vIdItem, string vCampo = "", string vCritic = "")
         {
@@ -102,34 +44,34 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv,
                 baseSoapService.SoapWss, token, vIdItem, vCampo, vCritic);
 
-            using var httpClientHandler = new HttpClientHandler();
-
-            // Aplicación del bypass de SSL si es necesario
-            if (baseSoapService.IgnorarSSl)
-                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
-
-            using var httpClient = new HttpClient(httpClientHandler)
+            // Generamos la consulta
+            var options = new RestClientOptions()
             {
-                BaseAddress = new Uri(configuration["SoapServices:BaseUrl"]!)
+                BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
             };
 
-            // Construimos la solicitud HTTP
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "")
-            {
-                Content = new StringContent(requestSoap, Encoding.UTF8, baseSoapService.TextXml)
-            };
-            httpRequestMessage.Headers.Add("SOAPAction", configuration["SoapServices:MetodoF4101Producto"]!);
-            httpRequestMessage.Headers.Add("Content-Type", baseSoapService.TextXml);
+            // Aplicación del bypass de SSL
+            if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
 
-            // Enviamos la solicitud
-            var response = await httpClient.SendAsync(httpRequestMessage);
+            var restClient = new RestClient(options);
+            var restRequest = new RestRequest()
+            {
+                Method = Method.Post,
+            };
+            restRequest.AddHeader("Content-Type", baseSoapService.TextXml);
+            restRequest.AddBody(requestSoap, baseSoapService.TextXml);
+            restRequest.AddHeader(baseSoapService.SoapAction, configuration["SoapServices:MetodoF4101Producto"]!);
+
+            var response = await restClient.ExecuteAsync(restRequest);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
 
-            var responseContent = WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync());
+            var responseContent = WebUtility.HtmlDecode(response.Content);
             if (string.IsNullOrEmpty(responseContent))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
+
+            responseContent = ProcesarEncabezadosFaltantes(responseContent);
 
             // Parsear la respuesta SOAP
             var xDocument = XDocument.Parse(responseContent);
@@ -150,5 +92,13 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             return resultado;
         }
 
+        private string ProcesarEncabezadosFaltantes(string responseContent)
+        {
+            string pattern = "^<([^>]*)>";
+
+            var nuevoEncabezado = "<Hola>";
+
+            return Regex.Replace(responseContent, pattern, nuevoEncabezado);
+        }
     }
 }
