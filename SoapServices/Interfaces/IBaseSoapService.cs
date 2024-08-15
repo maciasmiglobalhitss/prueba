@@ -7,6 +7,7 @@
         string TextXml { get; }
         string SoapAction { get; }
         string SoapXmlns { get; }
+        bool IgnorarSSl { get; }
 
         Task<string> ObtenerTokenSoap();
     }

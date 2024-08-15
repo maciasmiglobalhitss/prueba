@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PruebaConexionIntegracion.Commons;
+using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
@@ -20,6 +21,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         protected const string m_TextXml = "text/xml";
         protected const string m_SoapAction = "SOAPAction";
         protected const string m_KbGwSeguridad = "KB_GW_Seguridad";
+        protected readonly bool m_IgnorarSSl;
 
         private const string SoapRequestGsa = "<soapenv:Envelope xmlns:soapenv=\"{0}\" xmlns:kb=\"KB_GW_Seguridad\"><soapenv:Header/><soapenv:Body><kb:gpsys_ws.CONSULTA_PRM_SEGURIDAD><kb:Scg_app_codigo>{1}</kb:Scg_app_codigo><kb:Gps_prm_rec_codigo>{2}</kb:Gps_prm_rec_codigo></kb:gpsys_ws.CONSULTA_PRM_SEGURIDAD></soapenv:Body></soapenv:Envelope>";
 
@@ -28,6 +30,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         public BaseSoapService(IConfiguration configuration)
         {
             this.configuration = configuration;
+            m_IgnorarSSl = configuration.GetValue<bool>("IgnorarSSl");
         }
 
         public string SoapEnv => m_SoapEnv;
@@ -39,6 +42,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         public string SoapAction => m_SoapAction;
 
         public string SoapXmlns => m_SoapXmlns;
+        public bool IgnorarSSl => m_IgnorarSSl;
 
         public async Task<string> ObtenerTokenSoap()
         {
@@ -76,14 +80,10 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             {
                 BaseUrl = new Uri(configuration["SoapServices:TokenBaseUrl"]!),
                 Authenticator = new HttpBasicAuthenticator(aud_user, Base64Decode(aud_pass)),
-                ConfigureMessageHandler = handler =>
-                {
-                    return new HttpClientHandler
-                    {
-                        ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
-                    };
-                }
             };
+
+            options.AplicarByPassSsl();
+
             var client = new RestClient(options);
             var request = new RestRequest()
             {
@@ -102,7 +102,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             if (string.IsNullOrEmpty(response.Content))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
 
-            var customer = JsonSerializer.Deserialize<UserTokenResponseSoapDto>(response.Content)
+            var customer = JsonSerializer.Deserialize<UserTokenResponseSoapDto>(WebUtility.HtmlDecode(response.Content))
                 ?? throw new SoapServiceException(HandledErrorMessageType.ErrorDeserializarTitle, HandledErrorMessageType.ErrorDeserializarDetail);
 
             #endregion Generación del token
@@ -120,14 +120,8 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             var options = new RestClientOptions()
             {
                 BaseUrl = new Uri(configuration["Gsa:BaseUrl"]!),
-                ConfigureMessageHandler = handler =>
-                {
-                    return new HttpClientHandler
-                    {
-                        ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
-                    };
-                }
             };
+            options.AplicarByPassSsl();
 
             // Generamos la consulta
             var restClient = new RestClient(options);

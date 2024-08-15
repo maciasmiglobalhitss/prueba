@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PruebaConexionIntegracion.Commons;
+using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
+using RestSharp.Authenticators;
 using System.Xml.Linq;
 
 namespace PruebaConexionIntegracion.SoapServices.Services
@@ -44,6 +46,15 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, baseSoapService.SoapWss, token, tipoConsulta);
 
             // Generamos la consulta
+
+            var options = new RestClientOptions()
+            {
+                BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
+            };
+
+            // Aplicación del bypass de SSL
+            if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
+
             var restClient = new RestClient(configuration["SoapServices:BaseUrl"]!);
             var restRequest = new RestRequest()
             {
@@ -67,11 +78,11 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             XNamespace nameSpaceXmlns = baseSoapService.SoapXmlns;
 
             var resultado = xDocument
-                .Descendants(baseSoapService.SoapXmlns + "getUdcsBean")
+                .Descendants(nameSpaceXmlns + "getUdcsBean")
                 .Select(bean => new F0005ResponseSoapDto()
                 {
-                    Code = bean.Element(baseSoapService.SoapXmlns + "Code")?.Value ?? string.Empty,
-                    Description = bean.Element(baseSoapService.SoapXmlns + "Description")?.Value ?? string.Empty,
+                    Code = bean.Element(nameSpaceXmlns + "Code")?.Value ?? string.Empty,
+                    Description = bean.Element(nameSpaceXmlns + "Description")?.Value ?? string.Empty,
                 });
 
             return resultado;
