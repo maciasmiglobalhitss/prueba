@@ -1,11 +1,11 @@
 ﻿namespace PruebaConexionIntegracion.SoapServices.Models.Commons
 {
-    public class NameSpaceXml
+    public class NameSpaceXmlDto
     {
         public string Prefijo { get; }
         public string Encabezado { get; }
         
-        public NameSpaceXml(string prefijo, string encabezado) {
+        public NameSpaceXmlDto(string prefijo, string encabezado) {
             this.Prefijo = prefijo;
             this.Encabezado = encabezado;
         }

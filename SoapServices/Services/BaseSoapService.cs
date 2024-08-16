@@ -2,6 +2,7 @@
 using PruebaConexionIntegracion.Commons;
 using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
+using PruebaConexionIntegracion.SoapServices.Models.Commons;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -9,6 +10,7 @@ using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace PruebaConexionIntegracion.SoapServices.Services
@@ -42,13 +44,44 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         public string SoapAction => m_SoapAction;
 
         public string SoapXmlns => m_SoapXmlns;
-        public bool IgnorarSSl => m_IgnorarSSl;
 
-        public async Task<string> ObtenerTokenSoap()
+        public async Task<XDocument> ExecuteSoapRequest(SoapMethodRequestDto requestDto)
+        {
+            // Generamos la consulta
+            var options = new RestClientOptions()
+            {
+                BaseUrl = new Uri(requestDto.BaseUrl),
+            };
+
+            // Aplicación del bypass de SSL
+            if (m_IgnorarSSl) options.AplicarByPassSsl();
+
+            // Preperamos el cliente
+            var restClient = new RestClient(options);
+            var restRequest = new RestRequest()
+            {
+                Method = Method.Post,
+            };
+            restRequest.AddHeader("Content-Type", m_TextXml);
+            restRequest.AddBody(requestDto.RequestXml, m_TextXml);
+            restRequest.AddHeader(m_SoapAction, requestDto.MethodUrl);
+
+            var response = await restClient.ExecuteAsync(restRequest);
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
+
+            var responseContent = WebUtility.HtmlDecode(response.Content);
+            if (string.IsNullOrEmpty(responseContent))
+                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
+
+            // Parsear la respuesta SOAP
+            return XDocument.Parse(ProcesarEncabezadosFaltantes(responseContent, requestDto.NameSpaces));
+        }
+        public async Task<string> ObtenerTokenAutorizacionConsumoSoap()
         {
             #region Recuperación de credenciales soffi
-            var credencialesGsa = await ObtenerCredencialesSoap();
-            if (credencialesGsa is null) credencialesGsa = [];
+            var credencialesGsa = await ObtenerCredencialesSoap() ?? [];
 
             var audUserCods = configuration["Gsa:AudUserCod"]!.Split(";");
             var audPassCods = configuration["Gsa:AudPassCod"]!.Split(";");
@@ -79,10 +112,11 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             var options = new RestClientOptions()
             {
                 BaseUrl = new Uri(configuration["SoapServices:TokenBaseUrl"]!),
-                Authenticator = new HttpBasicAuthenticator(aud_user, Base64Decode(aud_pass)),
+                Authenticator = new HttpBasicAuthenticator(aud_user, Base64Decode(aud_pass))
             };
 
-            options.AplicarByPassSsl();
+            // Aplicación del bypass de SSL
+            if (m_IgnorarSSl) options.AplicarByPassSsl();
 
             var client = new RestClient(options);
             var request = new RestRequest()
@@ -101,51 +135,26 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
             if (string.IsNullOrEmpty(response.Content))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
-            var customer = JsonSerializer.Deserialize<UserTokenResponseSoapDto>(WebUtility.HtmlDecode(response.Content), new JsonSerializerOptions ()
-            {
-                PropertyNameCaseInsensitive = true,
-            }) ?? throw new SoapServiceException(HandledErrorMessageType.ErrorDeserializarTitle, HandledErrorMessageType.ErrorDeserializarDetail);
+
+            var customer = JsonSerializer.Deserialize<UserTokenResponseSoapDto>(WebUtility.HtmlDecode(response.Content))
+                ?? throw new SoapServiceException(HandledErrorMessageType.ErrorDeserializarTitle, HandledErrorMessageType.ErrorDeserializarDetail);
 
             #endregion Generación del token
 
             return customer.Id_token;
         }
 
+        #region Métodos Adicionales       
         private async Task<IEnumerable<CredencialesGsaResponseSoapDto>> ObtenerCredencialesSoap()
         {
             // Generamos el request
             string requestSoap = string.Format(SoapRequestGsa,
-                SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
-            var soapAction = configuration["Gsa:MetodoCredenciales"]!;
+                m_SoapEnv, configuration["Gsa:CodApplication"]!, configuration["Gsa:CodResource"]!);
 
-            var options = new RestClientOptions()
-            {
-                BaseUrl = new Uri(configuration["Gsa:BaseUrl"]!),
-            };
-            options.AplicarByPassSsl();
+            var soapRequest = new SoapMethodRequestDto(configuration["Gsa:BaseUrl"]!,
+                configuration["Gsa:MetodoCredencial"]!, requestSoap, []);
 
-            // Generamos la consulta
-            var restClient = new RestClient(options);
-            var restRequest = new RestRequest()
-            {
-                Method = Method.Post,
-            };
-
-            restRequest.AddHeader("Content-Type", "text/xml;charset=UTF-8");
-            restRequest.AddHeader("SOAPAction", soapAction);
-            restRequest.AddParameter("text/xml", requestSoap, ParameterType.RequestBody);
-
-            var response = await restClient.ExecuteAsync(restRequest);
-
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
-
-            var responseContent = response.Content;
-            if (string.IsNullOrEmpty(responseContent))
-                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
-
-            // Parsear la respuesta SOAP
-            var xDocument = XDocument.Parse(WebUtility.HtmlDecode(responseContent));
+            var xDocument = await ExecuteSoapRequest(soapRequest);
             XNamespace nameSpaceKbGwSeguridad = m_KbGwSeguridad;
 
             var resultado = xDocument
@@ -159,15 +168,37 @@ namespace PruebaConexionIntegracion.SoapServices.Services
 
             return resultado;
         }
-        public static bool AcceptAllCertifications(object sender, X509Certificate certification, X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            return true;
-        }
-
         private static string Base64Decode(string base64EncodedData)
         {
-            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
+
+        private static string ProcesarEncabezadosFaltantes(string xmlContent, IList<NameSpaceXmlDto> nameSpaceXmls)
+        {
+            // Preaparamos el patrón de búsqueda
+            string pattern = "^<([^>]*)>";
+
+            // Buscamos el primer encabezado encabezado
+            var match = Regex.Match(xmlContent, pattern);
+            if (!match.Success) throw new SoapServiceException(HandledErrorMessageType.ErrorPrepararEncabezarTitle, HandledErrorMessageType.ErrorPrepararEncabezarDetail);
+
+            // Eliminamos los caracteres de apertura y cierre
+            var nuevoEncabezado = match.Groups[1].Value
+                .Replace("<", string.Empty)
+                .Replace(">", string.Empty);
+
+            // Recorremos los encabezados faltantes
+            foreach (var nameSpaceXml in nameSpaceXmls)
+            {
+                // Si el encabezado no existe, lo agregamos
+                if (!nuevoEncabezado.Contains(nameSpaceXml.Prefijo) && xmlContent.Contains(nameSpaceXml.Prefijo))
+                    nuevoEncabezado += $" {nameSpaceXml.Encabezado}";
+            }
+
+            // Asignamos el nuevo encabezado
+            return Regex.Replace(xmlContent, pattern, $"<{nuevoEncabezado}>");
+        }
+        #endregion
     }
 }

@@ -2,6 +2,7 @@
 using PruebaConexionIntegracion.Commons;
 using PruebaConexionIntegracion.SoapServices.Extensions;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
+using PruebaConexionIntegracion.SoapServices.Models.Commons;
 using PruebaConexionIntegracion.SoapServices.Models.Response;
 using RestSharp;
 using System.Net;
@@ -32,53 +33,39 @@ namespace PruebaConexionIntegracion.SoapServices.Services
         private async Task<IEnumerable<F4101UnidadMedidaResponseSoapDto>> EjecutarConsulta(string vCampo = "", string vCritic = "")
         {
             // Generamos el token
-            string token = await baseSoapService.ObtenerTokenSoap();
+            string token = await baseSoapService.ObtenerTokenAutorizacionConsumoSoap();
 
             if (string.IsNullOrEmpty(token))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorGeneraTokenTitle, HandledErrorMessageType.ErrorGeneraTokenTitle);
 
             // Generamos el request
-            string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv, 
+            string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv,
                 baseSoapService.SoapWss, token, vCampo, vCritic);
 
-            // Generamos la consulta
-            var options = new RestClientOptions()
-            {
-                BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
-            };
+            var soapMethodRequetDto = new SoapMethodRequestDto(
+                configuration["SoapServices:BaseUrl"]!, configuration["SoapServices:MetodoF4101UnidadMedida"]!,
+                requestSoap, []);
 
-            // Aplicación del bypass de SSL
-            if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
-
-            var restClient = new RestClient(options);
-            var restRequest = new RestRequest()
-            {
-                Method = Method.Post,
-            };
-            restRequest.AddHeader("Content-Type", baseSoapService.TextXml);
-            restRequest.AddBody(requestSoap, baseSoapService.TextXml);
-            restRequest.AddHeader(baseSoapService.SoapAction, configuration["SoapServices:MetodoF4101UnidadMedida"]!);
-
-            var response = await restClient.ExecuteAsync(restRequest);
-
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
-
-            var responseContent = WebUtility.HtmlDecode(response.Content);
-            if (string.IsNullOrEmpty(responseContent))
-                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
-
-            // Parsear la respuesta SOAP
-            var xDocument = XDocument.Parse(responseContent);
+            var xDocument = await baseSoapService.ExecuteSoapRequest(soapMethodRequetDto);
             XNamespace nameSpaceXmlns = baseSoapService.SoapXmlns;
 
-            var resultado = xDocument
+            List<F4101UnidadMedidaResponseSoapDto> resultado = [];
+            var desencats = xDocument
                 .Descendants(nameSpaceXmlns + "getUniMedBean")
-                .Select(bean => new F4101UnidadMedidaResponseSoapDto()
+                .ToList();
+
+            // Verificamos si el servicio nos devolvió un mensaje de error
+            desencats.ForEach(bean =>
+            {
+                var mensaje = bean.Element(nameSpaceXmlns + "message")?.Value;
+                if (!string.IsNullOrEmpty(mensaje)) throw new SoapServiceException(HandledErrorMessageType.ErrorErrorServicioTitle, HandledErrorMessageType.ErrorErrorServicioDetail);
+
+                resultado.Add(new F4101UnidadMedidaResponseSoapDto()
                 {
                     Code = bean.Element(nameSpaceXmlns + "Code")?.Value ?? string.Empty,
                     Description = bean.Element(nameSpaceXmlns + "Description")?.Value ?? string.Empty,
                 });
+            });
 
             return resultado;
         }

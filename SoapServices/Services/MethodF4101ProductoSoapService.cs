@@ -36,7 +36,7 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             string vIdItem, string vCampo = "", string vCritic = "")
         {
             // Generamos el token
-            string token = await baseSoapService.ObtenerTokenSoap();
+            string token = await baseSoapService.ObtenerTokenAutorizacionConsumoSoap();
 
             if (string.IsNullOrEmpty(token))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorGeneraTokenTitle, HandledErrorMessageType.ErrorGeneraTokenTitle);
@@ -45,42 +45,26 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             string requestSoap = string.Format(SoapRequest, baseSoapService.SoapEnv,
                 baseSoapService.SoapWss, token, vIdItem, vCampo, vCritic);
 
-            // Generamos la consulta
-            var options = new RestClientOptions()
-            {
-                BaseUrl = new Uri(configuration["SoapServices:BaseUrl"]!),
-            };
-
-            // Aplicación del bypass de SSL
-            if (baseSoapService.IgnorarSSl) options.AplicarByPassSsl();
-
-            var restClient = new RestClient(options);
-            var restRequest = new RestRequest()
-            {
-                Method = Method.Post,
-            };
-            restRequest.AddHeader("Content-Type", baseSoapService.TextXml);
-            restRequest.AddBody(requestSoap, baseSoapService.TextXml);
-            restRequest.AddHeader(baseSoapService.SoapAction, configuration["SoapServices:MetodoF4101Producto"]!);
-
-            var response = await restClient.ExecuteAsync(restRequest);
-
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaSolicitudTitle, HandledErrorMessageType.ErrorRespuestaSolicitudDetail);
-
-            var responseContent = WebUtility.HtmlDecode(response.Content);
-            if (string.IsNullOrEmpty(responseContent))
-                throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
-
-            responseContent = ProcesarEncabezadosFaltantes(responseContent);
+            var soapMethodRequetDto = new SoapMethodRequestDto(
+                configuration["SoapServices:BaseUrl"]!, configuration["SoapServices:MetodoF4101Producto"]!,
+                requestSoap, [new("xsi", "xmlns:xsi=\"xsi\"")]);
 
             // Parsear la respuesta SOAP
-            var xDocument = XDocument.Parse(responseContent);
+            var xDocument = await baseSoapService.ExecuteSoapRequest(soapMethodRequetDto);
             XNamespace nameSpaceXmlns = baseSoapService.SoapXmlns;
 
-            var resultado = xDocument
+            List<F4101ProductoResponseSoapDto> resultado = [];
+            var desencats = xDocument
                 .Descendants(nameSpaceXmlns + "getProductosBean")
-                .Select(bean => new F4101ProductoResponseSoapDto()
+                .ToList();
+
+            // Verificamos si el servicio nos devolvió un mensaje de error
+            desencats.ForEach(bean =>
+            {
+                var mensaje = bean.Element(nameSpaceXmlns + "message")?.Value;
+                if (!string.IsNullOrEmpty(mensaje)) throw new SoapServiceException(HandledErrorMessageType.ErrorErrorServicioTitle, HandledErrorMessageType.ErrorErrorServicioDetail);
+
+                resultado.Add(new F4101ProductoResponseSoapDto()
                 {
                     Id = Convert.ToDecimal(bean.Element(nameSpaceXmlns + "id")?.Value),
                     It = bean.Element(nameSpaceXmlns + "it")?.Value ?? string.Empty,
@@ -89,13 +73,13 @@ namespace PruebaConexionIntegracion.SoapServices.Services
                     Jp = bean.Element(nameSpaceXmlns + "jp")?.Value ?? string.Empty,
                     Cod = bean.Element(nameSpaceXmlns + "cod")?.Value ?? string.Empty,
                 });
+            });
 
             return resultado;
         }
-
         private static string ProcesarEncabezadosFaltantes(string responseContent)
         {
-            ICollection<NameSpaceXml> encabezados = [
+            ICollection<NameSpaceXmlDto> encabezados = [
                 new("xsi", "xmlns:xsi=\"xsi\"")
             ];
 
