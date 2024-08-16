@@ -136,8 +136,10 @@ namespace PruebaConexionIntegracion.SoapServices.Services
             if (string.IsNullOrEmpty(response.Content))
                 throw new SoapServiceException(HandledErrorMessageType.ErrorRespuestaVaciaTitle, HandledErrorMessageType.ErrorRespuestaVaciaDetail);
 
-            var customer = JsonSerializer.Deserialize<UserTokenResponseSoapDto>(WebUtility.HtmlDecode(response.Content))
-                ?? throw new SoapServiceException(HandledErrorMessageType.ErrorDeserializarTitle, HandledErrorMessageType.ErrorDeserializarDetail);
+            var customer = JsonSerializer.Deserialize<UserTokenResponseSoapDto>(WebUtility.HtmlDecode(response.Content), new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true   
+            }) ?? throw new SoapServiceException(HandledErrorMessageType.ErrorDeserializarTitle, HandledErrorMessageType.ErrorDeserializarDetail);
 
             #endregion Generación del token
 
