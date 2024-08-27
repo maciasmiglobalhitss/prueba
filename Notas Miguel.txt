@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wss:getBans>
+         <wss:requestBean>            
+			<wss:token></wss:token>
+            <wss:pd_producto>0101011462</wss:pd_producto>
+         </wss:requestBean>
+      </wss:getBans>
+   </soapenv:Body>
+</soapenv:Envelope>
