@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PruebaConexionIntegracion.SoapServices;
@@ -14,14 +15,40 @@ var builder = new HostBuilder()
         services.ConfigurarServicioSoap();
     });
 
-var host = builder.Build();
-using (var scope = host.Services.CreateScope())
+OpenSqlConnection();
+
+//var host = builder.Build();
+//using (var scope = host.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    await VerificarFuncionaMethodF0005Soap(services);
+//    await VerificarFuncionaMethodF4101ProductoSoap(services);
+//    await VerificarFuncionaMethodF4101UnidadMediaSoap(services);
+//    await VerificarFuncionaMethodRangoValorSoap(services);
+//}
+
+static void OpenSqlConnection()
 {
-    var services = scope.ServiceProvider;
-    await VerificarFuncionaMethodF0005Soap(services);
-    await VerificarFuncionaMethodF4101ProductoSoap(services);
-    await VerificarFuncionaMethodF4101UnidadMediaSoap(services);
-    await VerificarFuncionaMethodRangoValorSoap(services);
+    var template = "Server={0};database={1};User ID={2};Password={3};Trusted_Connection=true;trustServerCertificate=yes;Integrated Security=false;";
+    var servidor = ".,1433";
+    var baseDatos = "sinergia2";
+    var usuario = "sa";
+    var contraseña = "Farkas1205_";
+
+    var connectionString = string.Format(template, servidor, baseDatos, usuario, contraseña);
+    try
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            Console.WriteLine("ServerVersion: {0}", connection.ServerVersion);
+            Console.WriteLine("State: {0}", connection.State);
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("State: {0}", ex.Message + "Interna :" + ex.InnerException?.Message);
+    }
 }
 
 static async Task VerificarFuncionaMethodF0005Soap(IServiceProvider services)
