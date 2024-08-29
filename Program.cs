@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PruebaConexionIntegracion.SoapServices;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
+using System.DirectoryServices.AccountManagement;
+
 
 var builder = new HostBuilder()
     .ConfigureAppConfiguration((hostContext, config) =>
@@ -15,8 +17,10 @@ var builder = new HostBuilder()
         services.ConfigurarServicioSoap();
     });
 
-OpenSqlConnection();
+//// Prueba Conexion
+//OpenSqlConnection();
 
+//// Prueba de los servicios
 //var host = builder.Build();
 //using (var scope = host.Services.CreateScope())
 //{
@@ -26,6 +30,13 @@ OpenSqlConnection();
 //    await VerificarFuncionaMethodF4101UnidadMediaSoap(services);
 //    await VerificarFuncionaMethodRangoValorSoap(services);
 //}
+
+
+// Prueba de login
+VerificarLoginAdOnPremisse();
+
+#region Métodos adicionales
+
 
 static void OpenSqlConnection()
 {
@@ -133,4 +144,32 @@ static async Task VerificarFuncionaMethodRangoValorSoap(IServiceProvider service
 }
 
 
-//await builder.RunConsoleAsync();
+static void VerificarLoginAdOnPremisse()
+{
+    try
+    {
+        string domainName = Environment.UserDomainName;
+        var username = "mamz9524";
+        var password = "Departamento9*";
+
+        var context = new PrincipalContext(ContextType.Domain, domainName);
+        bool isValid = context.ValidateCredentials(username, password, ContextOptions.Negotiate);
+
+        if (isValid)
+        {
+            Console.WriteLine("Credenciais válidas");
+        }
+        else
+        {
+            Console.WriteLine("Credenciais inválidas");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Error: " + ex.Message);
+        Console.WriteLine("Error Interno: " + ex.InnerException?.Message);
+    }
+}
+#endregion
+
+//await builder.RunConsoleAsync(); 
