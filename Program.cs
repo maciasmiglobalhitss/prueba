@@ -149,8 +149,8 @@ static void VerificarLoginAdOnPremisse()
     try
     {
         string domainName = Environment.UserDomainName;
-        var username = "mamz9524";
-        var password = "Departamento9*";
+        var username = "dtcsalazar";
+        var password = "0959011347sebas";
 
         var context = new PrincipalContext(ContextType.Domain, domainName);
         bool isValid = context.ValidateCredentials(username, password, ContextOptions.Negotiate);
