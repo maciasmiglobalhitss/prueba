@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using PruebaConexionIntegracion.SoapServices;
 using PruebaConexionIntegracion.SoapServices.Interfaces;
 using System.DirectoryServices.AccountManagement;
+using System.Text;
 
 
 var builder = new HostBuilder()
@@ -16,6 +17,10 @@ var builder = new HostBuilder()
     {
         services.ConfigurarServicioSoap();
     });
+
+var encde = Convert.FromBase64String("ZDglMU50NDNFN2ckM1Q=");
+var texto = Encoding.UTF8.GetString(encde);
+Console.WriteLine(texto);
 
 //// Prueba Conexion
 //OpenSqlConnection();

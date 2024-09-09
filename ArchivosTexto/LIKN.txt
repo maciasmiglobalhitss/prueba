@@ -1,1 +1,6 @@
 https://favorita.sharepoint.com/sites/SERVICIOSNOPRODUCCION/CATALOGOSDEPRODUCTOS/SitePages/Inicio.aspx
+
+PSINERLDAP -> "account": "PSinLDAP_USD",  -- KEx73%G84* -> Usuario de servicio
+PSINERGSHP -> "account": "PSinSharePoint_USD", -- P5d3k&*379 -> Usuario precargado en proyecto SOAP UI
+PSINERGISW -> NO TIENE SECRETO 
+PSINERGIEO -> "account": "PSinergia_USDB", -- d8%1Nt43E7g$3T -> Base de datos
