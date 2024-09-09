@@ -1,0 +1,31 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gsa="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/GSAInterfaceWS/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gsa:getPerfilUsuario>
+         <gsa:requestBean>
+            <gsa:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjU4OTE5NzY1OTEsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjU4OTI1NzYsImlhdCI6MTcyNTg5MTk3Nn0.cOU5rTmCxEQFGGwSkVX_IHOeFDR4HH7cWV7E61O22h_TyazbiPoCc-fndG0YvR_miopAeSzAiElr4xjCfAKtSajxrObLOLxPgJdinO2dI6fuXXTrHyS9wUR8k9wP2fiEV3YsdAZ3P6A8KTsAf9g1Oh4g_77FaESJab_H9yOs_QjCEZwElmQ6vu-8zeW9fyixhQ5rlsBbbw6Nu_M9U18128pCoac8Pv2sorjrdEtYWWntxv21cdOdwifjagRvFZZ8ScZflogXPVCt2lAThPjH9aWic_NccB7tvYcmmcqXraBiFqnbAutzbUxZoDNClmPXm4aUNsOpBqjmuQRHBnOmhA</gsa:token>
+            <gsa:environment>db_seguridades</gsa:environment>
+            <gsa:scg_usu_codigo>dtacalva</gsa:scg_usu_codigo>
+            <gsa:scg_app_codigo>48</gsa:scg_app_codigo>
+         </gsa:requestBean>
+      </gsa:getPerfilUsuario>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+=====================================================
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getPerfilUsuarioResponse xmlns="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/GSAInterfaceWS/">
+         <response>
+            <PerfilUsuarioBean>
+               <scg_per_codigo>01</scg_per_codigo>
+               <scg_per_descripcion>SISTEMAS</scg_per_descripcion>
+               <message>OK.</message>
+            </PerfilUsuarioBean>
+         </response>
+      </getPerfilUsuarioResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
