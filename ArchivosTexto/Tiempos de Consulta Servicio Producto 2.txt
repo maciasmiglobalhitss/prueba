@@ -1,0 +1,280 @@
+==========================================================
+================INICIO CONTEO=============================
+==========================================================
+Validaciones del sistema:  Ms (948) Segundos(0,948)
+Recuperación desde BDD y mapeo a dto:  Ms (236) Segundos(0,236)
+
+Inicio Metodo PoblarRegistrosAsync
+
+
+Inicio Método Obtener token
+Recuperacion credenciales GSA:  Ms (55) Segundos(0,055)
+Generacion dle token:  Ms (277) Segundos(0,277)
+Fin Método Obtener token
+Inicio recuperacion sincrona en for
+cbec990e-9115-4211-8217-cffb7019a19f - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+cbec990e-9115-4211-8217-cffb7019a19f - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>160063</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+cbec990e-9115-4211-8217-cffb7019a19f - Consulta de datos servicio integracion: Ms (3917) Segundos(3,917)
+cbec990e-9115-4211-8217-cffb7019a19f - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+cbec990e-9115-4211-8217-cffb7019a19f - Fin Método EjecutarConsulta:   Ms (3918) Segundos(3,918)
+876aee43-0ffc-43cb-aea1-854c741fc857 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+876aee43-0ffc-43cb-aea1-854c741fc857 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>187793</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+876aee43-0ffc-43cb-aea1-854c741fc857 - Consulta de datos servicio integracion: Ms (7948) Segundos(7,948)
+876aee43-0ffc-43cb-aea1-854c741fc857 - Mapeo de respuesta servicio: Ms (1) Segundos(0,001)
+876aee43-0ffc-43cb-aea1-854c741fc857 - Fin Método EjecutarConsulta:   Ms (7950) Segundos(7,95)
+3343e4ed-700c-4836-a8c1-51d3d9c32de9 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+3343e4ed-700c-4836-a8c1-51d3d9c32de9 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+3343e4ed-700c-4836-a8c1-51d3d9c32de9 - Consulta de datos servicio integracion: Ms (2080) Segundos(2,08)
+3343e4ed-700c-4836-a8c1-51d3d9c32de9 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+3343e4ed-700c-4836-a8c1-51d3d9c32de9 - Fin Método EjecutarConsulta:   Ms (2080) Segundos(2,08)
+20c5c00e-d8c6-4db5-ba94-5623f3bb2b92 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+20c5c00e-d8c6-4db5-ba94-5623f3bb2b92 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>175907</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+20c5c00e-d8c6-4db5-ba94-5623f3bb2b92 - Consulta de datos servicio integracion: Ms (2111) Segundos(2,111)
+20c5c00e-d8c6-4db5-ba94-5623f3bb2b92 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+20c5c00e-d8c6-4db5-ba94-5623f3bb2b92 - Fin Método EjecutarConsulta:   Ms (2112) Segundos(2,112)
+44379ec5-d1a4-49ed-b787-a50025c69969 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+44379ec5-d1a4-49ed-b787-a50025c69969 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+44379ec5-d1a4-49ed-b787-a50025c69969 - Consulta de datos servicio integracion: Ms (6612) Segundos(6,612)
+44379ec5-d1a4-49ed-b787-a50025c69969 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+44379ec5-d1a4-49ed-b787-a50025c69969 - Fin Método EjecutarConsulta:   Ms (6612) Segundos(6,612)
+71e1939e-2a2c-4bc1-8d83-b72c7c85431f - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+71e1939e-2a2c-4bc1-8d83-b72c7c85431f - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>23630</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+71e1939e-2a2c-4bc1-8d83-b72c7c85431f - Consulta de datos servicio integracion: Ms (1766) Segundos(1,766)
+71e1939e-2a2c-4bc1-8d83-b72c7c85431f - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+71e1939e-2a2c-4bc1-8d83-b72c7c85431f - Fin Método EjecutarConsulta:   Ms (1766) Segundos(1,766)
+2d5ddd23-1c02-4db7-8f91-95ee1ab047b2 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+2d5ddd23-1c02-4db7-8f91-95ee1ab047b2 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>189612</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+2d5ddd23-1c02-4db7-8f91-95ee1ab047b2 - Consulta de datos servicio integracion: Ms (2253) Segundos(2,253)
+2d5ddd23-1c02-4db7-8f91-95ee1ab047b2 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+2d5ddd23-1c02-4db7-8f91-95ee1ab047b2 - Fin Método EjecutarConsulta:   Ms (2254) Segundos(2,254)
+8f368953-c560-406c-b9ae-59acaccbe9d0 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+8f368953-c560-406c-b9ae-59acaccbe9d0 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+8f368953-c560-406c-b9ae-59acaccbe9d0 - Consulta de datos servicio integracion: Ms (2236) Segundos(2,236)
+8f368953-c560-406c-b9ae-59acaccbe9d0 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+8f368953-c560-406c-b9ae-59acaccbe9d0 - Fin Método EjecutarConsulta:   Ms (2236) Segundos(2,236)
+9ba22841-0bb4-4e9b-8dfe-5e42d4a54496 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+9ba22841-0bb4-4e9b-8dfe-5e42d4a54496 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>186468</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+9ba22841-0bb4-4e9b-8dfe-5e42d4a54496 - Consulta de datos servicio integracion: Ms (1824) Segundos(1,824)
+9ba22841-0bb4-4e9b-8dfe-5e42d4a54496 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+9ba22841-0bb4-4e9b-8dfe-5e42d4a54496 - Fin Método EjecutarConsulta:   Ms (1824) Segundos(1,824)
+776dcdad-7676-44d4-add0-82e36e25b921 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+776dcdad-7676-44d4-add0-82e36e25b921 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>193619</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+776dcdad-7676-44d4-add0-82e36e25b921 - Consulta de datos servicio integracion: Ms (2083) Segundos(2,083)
+776dcdad-7676-44d4-add0-82e36e25b921 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+776dcdad-7676-44d4-add0-82e36e25b921 - Fin Método EjecutarConsulta:   Ms (2083) Segundos(2,083)
+a56c5216-9bcb-4e10-bd37-2eea9a6d4311 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+a56c5216-9bcb-4e10-bd37-2eea9a6d4311 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+a56c5216-9bcb-4e10-bd37-2eea9a6d4311 - Consulta de datos servicio integracion: Ms (1963) Segundos(1,963)
+a56c5216-9bcb-4e10-bd37-2eea9a6d4311 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+a56c5216-9bcb-4e10-bd37-2eea9a6d4311 - Fin Método EjecutarConsulta:   Ms (1963) Segundos(1,963)
+90a485b8-02be-4cae-b440-12f70329eded - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+90a485b8-02be-4cae-b440-12f70329eded - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>164486</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+90a485b8-02be-4cae-b440-12f70329eded - Consulta de datos servicio integracion: Ms (1761) Segundos(1,761)
+90a485b8-02be-4cae-b440-12f70329eded - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+90a485b8-02be-4cae-b440-12f70329eded - Fin Método EjecutarConsulta:   Ms (1761) Segundos(1,761)
+94b2f054-01e7-4d91-81e2-b6f32e35900b - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+94b2f054-01e7-4d91-81e2-b6f32e35900b - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>185449</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+94b2f054-01e7-4d91-81e2-b6f32e35900b - Consulta de datos servicio integracion: Ms (1758) Segundos(1,758)
+94b2f054-01e7-4d91-81e2-b6f32e35900b - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+94b2f054-01e7-4d91-81e2-b6f32e35900b - Fin Método EjecutarConsulta:   Ms (1758) Segundos(1,758)
+df8ccde4-29f8-41e1-b438-598e23bf2fae - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+df8ccde4-29f8-41e1-b438-598e23bf2fae - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>193619</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+df8ccde4-29f8-41e1-b438-598e23bf2fae - Consulta de datos servicio integracion: Ms (2242) Segundos(2,242)
+df8ccde4-29f8-41e1-b438-598e23bf2fae - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+df8ccde4-29f8-41e1-b438-598e23bf2fae - Fin Método EjecutarConsulta:   Ms (2243) Segundos(2,243)
+86566466-68cf-4a0f-8060-1d28b87318ee - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+86566466-68cf-4a0f-8060-1d28b87318ee - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+86566466-68cf-4a0f-8060-1d28b87318ee - Consulta de datos servicio integracion: Ms (2195) Segundos(2,195)
+86566466-68cf-4a0f-8060-1d28b87318ee - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+86566466-68cf-4a0f-8060-1d28b87318ee - Fin Método EjecutarConsulta:   Ms (2196) Segundos(2,196)
+555385f6-3c4b-452b-8355-ab1ea2a95920 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+555385f6-3c4b-452b-8355-ab1ea2a95920 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>178554</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+555385f6-3c4b-452b-8355-ab1ea2a95920 - Consulta de datos servicio integracion: Ms (1704) Segundos(1,704)
+555385f6-3c4b-452b-8355-ab1ea2a95920 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+555385f6-3c4b-452b-8355-ab1ea2a95920 - Fin Método EjecutarConsulta:   Ms (1705) Segundos(1,705)
+3ff4197e-09cd-4736-9cb3-df77aaaa7a48 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+3ff4197e-09cd-4736-9cb3-df77aaaa7a48 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>193619</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+3ff4197e-09cd-4736-9cb3-df77aaaa7a48 - Consulta de datos servicio integracion: Ms (2036) Segundos(2,036)
+3ff4197e-09cd-4736-9cb3-df77aaaa7a48 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+3ff4197e-09cd-4736-9cb3-df77aaaa7a48 - Fin Método EjecutarConsulta:   Ms (2037) Segundos(2,037)
+28e1a8a0-6003-459e-9a18-b554c98244f5 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+28e1a8a0-6003-459e-9a18-b554c98244f5 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+28e1a8a0-6003-459e-9a18-b554c98244f5 - Consulta de datos servicio integracion: Ms (2114) Segundos(2,114)
+28e1a8a0-6003-459e-9a18-b554c98244f5 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+28e1a8a0-6003-459e-9a18-b554c98244f5 - Fin Método EjecutarConsulta:   Ms (2114) Segundos(2,114)
+bdac1342-db31-45d4-abdc-61ca91c218d4 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+bdac1342-db31-45d4-abdc-61ca91c218d4 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>178554</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+bdac1342-db31-45d4-abdc-61ca91c218d4 - Consulta de datos servicio integracion: Ms (1847) Segundos(1,847)
+bdac1342-db31-45d4-abdc-61ca91c218d4 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+bdac1342-db31-45d4-abdc-61ca91c218d4 - Fin Método EjecutarConsulta:   Ms (1847) Segundos(1,847)
+d5b604b8-ed5f-49e4-9ecc-f3de80bc1062 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+d5b604b8-ed5f-49e4-9ecc-f3de80bc1062 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>167563</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+d5b604b8-ed5f-49e4-9ecc-f3de80bc1062 - Consulta de datos servicio integracion: Ms (2219) Segundos(2,219)
+d5b604b8-ed5f-49e4-9ecc-f3de80bc1062 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+d5b604b8-ed5f-49e4-9ecc-f3de80bc1062 - Fin Método EjecutarConsulta:   Ms (2219) Segundos(2,219)
+dc361c06-9ec8-4218-b8f2-d655653fe5e8 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+dc361c06-9ec8-4218-b8f2-d655653fe5e8 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>160063</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+dc361c06-9ec8-4218-b8f2-d655653fe5e8 - Consulta de datos servicio integracion: Ms (3592) Segundos(3,592)
+dc361c06-9ec8-4218-b8f2-d655653fe5e8 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+dc361c06-9ec8-4218-b8f2-d655653fe5e8 - Fin Método EjecutarConsulta:   Ms (3592) Segundos(3,592)
+d85a2a7f-cc6f-492c-9cdf-6b4b5eab1808 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+d85a2a7f-cc6f-492c-9cdf-6b4b5eab1808 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>171998</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+d85a2a7f-cc6f-492c-9cdf-6b4b5eab1808 - Consulta de datos servicio integracion: Ms (2163) Segundos(2,163)
+d85a2a7f-cc6f-492c-9cdf-6b4b5eab1808 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+d85a2a7f-cc6f-492c-9cdf-6b4b5eab1808 - Fin Método EjecutarConsulta:   Ms (2163) Segundos(2,163)
+7219fd16-51cb-4546-9e86-3a3d75cdc9cc - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+7219fd16-51cb-4546-9e86-3a3d75cdc9cc - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+7219fd16-51cb-4546-9e86-3a3d75cdc9cc - Consulta de datos servicio integracion: Ms (2209) Segundos(2,209)
+7219fd16-51cb-4546-9e86-3a3d75cdc9cc - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+7219fd16-51cb-4546-9e86-3a3d75cdc9cc - Fin Método EjecutarConsulta:   Ms (2209) Segundos(2,209)
+fedaa414-8eac-46ba-863c-e48185c5a576 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+fedaa414-8eac-46ba-863c-e48185c5a576 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>164486</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+fedaa414-8eac-46ba-863c-e48185c5a576 - Consulta de datos servicio integracion: Ms (1828) Segundos(1,828)
+fedaa414-8eac-46ba-863c-e48185c5a576 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+fedaa414-8eac-46ba-863c-e48185c5a576 - Fin Método EjecutarConsulta:   Ms (1829) Segundos(1,829)
+11003167-623c-4ecd-b9d7-66d8fbf62587 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+11003167-623c-4ecd-b9d7-66d8fbf62587 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>167521</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+11003167-623c-4ecd-b9d7-66d8fbf62587 - Consulta de datos servicio integracion: Ms (2115) Segundos(2,115)
+11003167-623c-4ecd-b9d7-66d8fbf62587 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+11003167-623c-4ecd-b9d7-66d8fbf62587 - Fin Método EjecutarConsulta:   Ms (2115) Segundos(2,115)
+b6b084c9-3fff-4fe4-afbe-c8b2b7a6072a - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+b6b084c9-3fff-4fe4-afbe-c8b2b7a6072a - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+b6b084c9-3fff-4fe4-afbe-c8b2b7a6072a - Consulta de datos servicio integracion: Ms (2006) Segundos(2,006)
+b6b084c9-3fff-4fe4-afbe-c8b2b7a6072a - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+b6b084c9-3fff-4fe4-afbe-c8b2b7a6072a - Fin Método EjecutarConsulta:   Ms (2007) Segundos(2,007)
+8bc414fa-7ba9-44ca-8fd3-9aeafda66708 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+8bc414fa-7ba9-44ca-8fd3-9aeafda66708 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Funda</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>164081</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+8bc414fa-7ba9-44ca-8fd3-9aeafda66708 - Consulta de datos servicio integracion: Ms (1864) Segundos(1,864)
+8bc414fa-7ba9-44ca-8fd3-9aeafda66708 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+8bc414fa-7ba9-44ca-8fd3-9aeafda66708 - Fin Método EjecutarConsulta:   Ms (1865) Segundos(1,865)
+ec2f2e72-6d7e-49fd-8f9a-a5dde90df906 - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+ec2f2e72-6d7e-49fd-8f9a-a5dde90df906 - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Etiqueta</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>167521</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+ec2f2e72-6d7e-49fd-8f9a-a5dde90df906 - Consulta de datos servicio integracion: Ms (2153) Segundos(2,153)
+ec2f2e72-6d7e-49fd-8f9a-a5dde90df906 - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+ec2f2e72-6d7e-49fd-8f9a-a5dde90df906 - Fin Método EjecutarConsulta:   Ms (2153) Segundos(2,153)
+39cfe748-6add-47d2-8550-965d8c699b2f - Inicio Método EjecutarConsulta
+
+Inicio Método Obtener token
+Recuperacion desde caché:  Ms (0) Segundos(0)
+Fin Método Obtener token
+39cfe748-6add-47d2-8550-965d8c699b2f - Trama: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/"><soapenv:Header/><soapenv:Body><wss:getProductos><wss:requestBean><wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjY3MTE4ODgyMjcsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjY3MTI0ODgsImlhdCI6MTcyNjcxMTg4OH0.L502Bk78DzEsHuix1C73-O4bVTky8nYkERRCsoY0yYk1Bl9Sr7d4ONw911zx2_sv64JdkLxSXxtges3-BAaoRoSP9vZcLuYZ2TXWeeheI2QdR6VRgfS7FqI0mufAcNOqeBgAylakE58ZTesI157QWHdCKEJ57f3A0IAIvx-or1gBWUlA3U6Mp0_F82ipiU-6q65pPAUaBSGKfQaFDKhmW0V-m9QbrClSC_5RM3olhHmHiQfMzopTaWuYdejV0b3ql0EQOFD5t1fpuigkj9mCJxp9jtgqf7Shm1huHhdN6mfDM1WbPyAsPLEhrP7Au_93bR0sv1Sa7CROMddPCXxUXQ</wss:token><wss:vIdItem>V_Ligas</wss:vIdItem><wss:vCampo>IMITM</wss:vCampo><wss:vCrit>10212</wss:vCrit></wss:requestBean></wss:getProductos></soapenv:Body></soapenv:Envelope>
+39cfe748-6add-47d2-8550-965d8c699b2f - Consulta de datos servicio integracion: Ms (2025) Segundos(2,025)
+39cfe748-6add-47d2-8550-965d8c699b2f - Mapeo de respuesta servicio: Ms (0) Segundos(0)
+39cfe748-6add-47d2-8550-965d8c699b2f - Fin Método EjecutarConsulta:   Ms (2025) Segundos(2,025)
+
+Final Metodo PoblarRegistrosAsync
+
+Filtrado y preparacion DTO::  Ms (1) Segundos(0,001)
+Tiempo total metodo:  Ms (74192) Segundos(74,192)
