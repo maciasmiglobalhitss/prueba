@@ -1,0 +1,34 @@
+https://srbp00mag00/services/WSSinergia/WSSinergia
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wss="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<wss:getProductos>
+			<wss:requestBean>
+				<wss:token>eyJraWQiOiJTUkJQMDBGTTAwIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJhdWQtc2luZXJnaWEiLCJzdWIiOiJwc2luZXJnaWFfdXNsIiwiZnVsbF9uYW1lIjoiVXN1YXJpbyBkZSBzZXJ2aWNpbyBpbnRlZ3JhY2nDs24gU2luZXJnaWEiLCJhdXRoX3RpbWUiOjE3MjkyODI3NDg3NjYsImlzcyI6Imh0dHBzOi8vU1JCUDAwRk0wMDo0NDMiLCJleHAiOjE3MjkyODMzNDgsImlhdCI6MTcyOTI4Mjc0OH0.faZiJytF3YqPOIkCceoUxy4UuS8YprlU0_vAKTdHqlrVb2RAuhA8iEcnKO7-KxwWvh6IBVd3BLumEnAv1hQPb1_LGYrZaNCReZEGctncLV9EZciPiPoxpObQKlODdNNYgHtGX1I3Ag12TRHsZ9nqNRK_t9Bj9_y7yptzs9xNKsLoMbAg4usGAuY2oCvzZWthe4mRy3A0pHpy0ry2EVajxaUZCG1NZvSGR4t4ZjMcVIvrlUmRdlVOzO78R5Xszqib4kmE4VWXYmKfjXJJsPjlnS6exIFI1ky3aGjgWI1qe8Zmn_09Dng14ptgzqWRmeOzlj7Vh6ma89IfhgYNV2Cf5w</wss:token>
+				<wss:vIdItem>V_Tapa</wss:vIdItem>
+				<wss:vCampo>IMITM</wss:vCampo>
+				<wss:vCrit>176843</wss:vCrit>
+			</wss:requestBean>
+		</wss:getProductos>
+	</soapenv:Body>
+</soapenv:Envelope>
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<getProductosResponse xmlns="http://magicsoftware.com/wsdl/com/magicsoftware/magicxpi/favoritafruit/WSSinergia/">
+			<response>
+				<getProductosBean>
+					<id>1</id>
+					<it>176843</it>
+					<lit>4210684</lit>
+					<ct>CR TAPA TECNIBANA</ct>
+					<jp/>
+					<cod xsi:nil="true"/>
+				</getProductosBean>
+			</response>
+		</getProductosResponse>
+	</soapenv:Body>
+</soapenv:Envelope>
