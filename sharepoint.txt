@@ -1,0 +1,5 @@
+url sharepoint sinergia: https://favorita.sharepoint.com/sites/SERVICIOSNOPRODUCCION/CATALOGOSDEPRODUCTOS/SitePages/Inicio.aspx
+
+usuario: PSinSharePoint_USD@favoritafc.com
+
+clave: P5d3k&*379
