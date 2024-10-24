@@ -3,3 +3,8 @@ url sharepoint sinergia: https://favorita.sharepoint.com/sites/SERVICIOSNOPRODUC
 usuario: PSinSharePoint_USD@favoritafc.com
 
 clave: P5d3k&*379
+
+
+
+Cadena conexion Base Datos:
+Server=SRBP00DBDES04;database=Sinergia;User ID=PSinergia_USDB;Password=d8%1Nt43E7g$3T;Trusted_Connection=true;trustServerCertificate=yes;Integrated Security=false;
