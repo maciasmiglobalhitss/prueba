@@ -1,0 +1,122 @@
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+ 
+class Program
+{
+    private static readonly string clientId = "98c44ff4-c016-4322-a269-cc1150e98960";
+    
+    private static readonly string tenantId = "a12e8762-e3dc-43be-b48a-90076f67a41e";
+    private static readonly string scope = "https://graph.microsoft.com/.default";
+    private static readonly string tokenEndpoint = $"https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token";
+ 
+    static async Task Main(string[] args)
+    {
+        string accessToken = await GetAccessTokenAsync();
+ 
+        // Obtener el ID del sitio
+        var siteId = await GetSiteIdAsync("anthonycalva.sharepoint.com", "SERVICIOSNOPRODUCCION", accessToken);
+        Console.WriteLine($"Site ID: {siteId}");
+ 
+        // Listar las bibliotecas de documentos en el sitio
+        var drives = await ListDrivesAsync(siteId, accessToken);
+        Console.WriteLine(drives);
+ 
+        // Encontrar el driveId de la biblioteca de documentos 'CATALOGOSDEPRODUCTOS'
+        var driveId = GetDriveId(drives, "CATALOGOSDEPRODUCTOS");
+        if (driveId == null)
+        {
+            Console.WriteLine("No se encontró la biblioteca de documentos 'CATALOGOSDEPRODUCTOS'.");
+            return;
+        }
+ 
+        // Listar archivos en la carpeta AGRICOLAS
+        var files = await ListFilesAsync($"/sites/{siteId}/drives/{driveId}/root:/AGRICOLAS:/children", accessToken);
+        Console.WriteLine(files);
+ 
+        // Crear un nuevo archivo en la carpeta AGRICOLAS
+        var newFile = await CreateFileAsync($"/sites/{siteId}/drives/{driveId}/root:/AGRICOLAS/nuevoArchivo.txt:/content", "Contenido del archivo", accessToken);
+        Console.WriteLine(newFile);
+    }
+ 
+    private static async Task<string> GetAccessTokenAsync()
+    {
+        using (var client = new HttpClient())
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, tokenEndpoint);
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("client_id", clientId),
+                new KeyValuePair<string, string>("client_secret", clientSecret),
+                new KeyValuePair<string, string>("scope", scope),
+                new KeyValuePair<string, string>("grant_type", "client_credentials")
+            });
+            request.Content = content;
+ 
+            var response = await client.SendAsync(request);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var tokenResponse = JObject.Parse(responseBody);
+            return tokenResponse["access_token"].ToString();
+        }
+    }
+ 
+    private static async Task<string> GetSiteIdAsync(string hostname, string siteName, string accessToken)
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await client.GetAsync($"https://graph.microsoft.com/v1.0/sites/{hostname}:/sites/{siteName}");
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var site = JObject.Parse(responseBody);
+            return site["id"].ToString();
+        }
+    }
+ 
+    private static async Task<JObject> ListDrivesAsync(string siteId, string accessToken)
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await client.GetAsync($"https://graph.microsoft.com/v1.0/sites/{siteId}/drives");
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(responseBody);
+        }
+    }
+ 
+    private static string GetDriveId(JObject drives, string driveName)
+    {
+        foreach (var drive in drives["value"])
+        {
+            if (drive["name"].ToString() == driveName)
+            {
+                return drive["id"].ToString();
+            }
+        }
+        return null;
+    }
+ 
+    private static async Task<JObject> ListFilesAsync(string endpoint, string accessToken)
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await client.GetAsync($"https://graph.microsoft.com/v1.0{endpoint}");
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(responseBody);
+        }
+    }
+ 
+    private static async Task<JObject> CreateFileAsync(string endpoint, string content, string accessToken)
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var requestContent = new StringContent(content, Encoding.UTF8, "text/plain");
+            var response = await client.PutAsync($"https://graph.microsoft.com/v1.0{endpoint}", requestContent);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(responseBody);
+        }
+    }
+}
