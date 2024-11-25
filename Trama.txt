@@ -1,0 +1,12 @@
+{
+    "Id": 227,
+    "Producto": "01",
+    "Observacion": "X",
+    "Data": {
+        "PesoNetoCaja": {
+            "Cantidad": 5,
+            "Unidad": "LB",
+            "Unidad_Medida": "Libra"
+        }
+    }
+}
