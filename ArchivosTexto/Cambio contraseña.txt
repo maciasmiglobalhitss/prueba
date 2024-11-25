@@ -2,28 +2,30 @@ https://webmail.favoritafruit.com/owa/auth/logon.aspx?replaceCurrent=1&url=https
  
 10.96.80.161
 favorita_fruit\dtacalva
-NP_1_0940636475 => NP_2_0940636475
+NP_3_0940636475
 
 
 10.96.80.112
 favorita_fruit\dtcsalazar
-0959011347sebas => NP_2_0959011347
+NP_3_0959011347
  
 10.96.80.182 
 favorita_fruit\dtlramirez
-NP_1_0927363549 => NP_2_0927363549
+NP_2_0927363549
 
 
 10.96.80.183
 favorita_fruit\dthjupiter
-NP_1_0927085365 => NP_2_0927085365
+NP_2_0927085365
 
 
 10.96.80.181
 favorita_fruit\dtltorres
-NP_1_1206260646 => NP_2_1206260646
+NP_2_1206260646
 
 
 10.96.80.127
 favorita_fruit\dtmpincay
-NP_1_0931106710 => NP_2_0931106710
+NP_2_0931106710
+
+
